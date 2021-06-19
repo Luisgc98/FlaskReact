@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block fields %}
+    <input type="hidden" id="user" value="{{ user.username }}">
+{% endblock fields %}
+{% block script %}
+    {{ super() }}
+    <script type="text/babel">
+        var username = $("#user").val();
+        ReactDOM.render(
+            <Header 
+                title={"React"}
+                btn={ username == "None" ? 'Registrate' : "Cerrar sesión"}
+                url={ "{{ url_for('auth.index') }}" }
+            />, 
+            root
+        );
+        function Indexpage(props){
+            return (
+                <div className="region">
+                    <div>
+
+                    </div>
+                </div>
+            );
+        }
+        ReactDOM.render(
+            <Indexpage />,
+            document.querySelector("#index_page")
+        );
+    </script>
+{% endblock script %}

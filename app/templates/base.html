@@ -1,0 +1,74 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block head %}
+    {{ super() }}
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+{% endblock head %}
+{% block body %}
+    {{ super() }}
+    {% block app_content %}
+        {% block fields %}
+
+        {% endblock fields %}
+        <div id="root"><div>
+    {% endblock app_content %}
+    {% block scripts %}
+        {{ super() }}
+        <script type="text/babel">
+            const root = document.querySelector("#root");
+            class Header extends React.Component {
+                constructor(props){
+                    super(props);
+                }
+
+                render(){
+                    const nav = {
+                        backgroundColor: "#373737",
+                        position: 'relative',
+                        top: '-1px'
+                    };
+                    const letters = {
+                        color: 'white'
+                    }
+                    return (
+                        <div>
+                            <nav className="navbar navbar-default"
+                                 id="header"
+                                 style={nav}
+                            >
+                                <div className="container-fluid">
+                                    <div className="navbar-header">
+                                        <a href="#" className="navbar-brand" style={letters}>
+                                            { this.props.title }
+                                        </a>
+                                    </div>
+                                    <div className="collapse navbar-collapse">
+                                        <ul className="nav navbar-nav navbar-right">
+                                            <li>
+                                                <button type="button" 
+                                                        className="btn btn-default navbar-btn"
+                                                        onClick={() => location.href=this.props.url}
+                                                > { this.props.btn }
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <div className="container" id="index_page">
+
+                            </div>
+                        </div>
+                    );
+                }
+            }
+        </script>
+        {% block script %}
+
+        {% endblock script %}
+    {% endblock scripts %}
+{% endblock body %}

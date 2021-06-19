@@ -1,0 +1,8 @@
+flask
+flask-sqlalchemy
+flask-bootstrap
+flask-login
+validate-email
+python-dotenv
+psycopg2-binary
+flask-blueprint

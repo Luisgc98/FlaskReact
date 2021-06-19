@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block script %}
+    {{ super() }}
+    <script type="text/babel">
+        ReactDOM.render(
+            <Header 
+                title={"React"}
+                btn={"Inicia sesión"}
+                url={ "{{ url_for('main.home') }}" }
+            />, 
+            root
+        );
+        function Indexpage(props){
+            return (
+                <div className="region">
+                    <div>
+
+                    </div>
+                </div>
+            );
+        }
+        ReactDOM.render(
+            <Indexpage />,
+            document.querySelector("#index_page")
+        );
+    </script>
+{% endblock script %}
